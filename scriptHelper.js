@@ -37,8 +37,27 @@ function validateInput(testInput) {
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   const pilotStatus = document.getElementById("pilotStatus");
   const copilotStatus = document.getElementById("copilotStatus");
+  const faultyItems = document.getElementById("faultyItems");
+  const fuelStatus = document.getElementById("fuelStatus");
+  const launchStatus = document.getElementById("launchStatus");
+  const cargoStatus = document.getElementById("cargoStatus");
   pilotStatus.innerText = `Pilot Ready: ${pilot}`;
   copilotStatus.innerText = `Co-pilot Ready: ${copilot}`;
+
+  if (fuelLevel < 10000) {
+    faultyItems.style.visibility = "visible";
+    fuelStatus.innerText = `Fuel level is too low for launch.`;
+    launchStatus.innerText = `Shuttle not ready for launch!`;
+    launchStatus.style.color = "red";
+  } else if (cargoMass > 10000) {
+    faultyItems.style.visibility = "visible";
+    cargoStatus.innerText = `Cargo mass too high for takeoff`;
+    launchStatus.innerText = `Shuttle not ready for launch!`;
+    launchStatus.style.color = "red";
+  } else {
+    launchStatus.innerText = `Shuttle is ready for launch.`;
+    launchStatus.style.color = "green";
+  }
 }
 
 async function myFetch() {
