@@ -27,19 +27,19 @@ function addDestinationInfo(
 function validateInput(testInput) {
   if (testInput.trim() === "") {
     return "Empty";
+  } else if (isNaN(testInput)) {
+    return "Not a Number";
   } else {
-    return "OK";
+    return "Is a Number";
   }
 }
 
-function formSubmission(
-  document,
-  list,
-  pilot,
-  copilot,
-  fuelLevel,
-  cargoLevel
-) {}
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+  const pilotStatus = document.getElementById("pilotStatus");
+  const copilotStatus = document.getElementById("copilotStatus");
+  pilotStatus.innerText = `Pilot Ready: ${pilot}`;
+  copilotStatus.innerText = `Co-pilot Ready: ${copilot}`;
+}
 
 async function myFetch() {
   let planetsReturned;

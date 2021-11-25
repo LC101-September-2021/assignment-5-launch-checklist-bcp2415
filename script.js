@@ -1,5 +1,4 @@
 window.addEventListener("load", function () {
-  console.log(validateInput("HI!"));
   const form = document.querySelector("form");
   form.addEventListener("submit", function (event) {
     const pilotName = document.querySelector("input[name=pilotName]");
