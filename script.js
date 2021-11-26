@@ -1,3 +1,5 @@
+const { validateInput } = require("./scriptHelper");
+
 window.addEventListener("load", function () {
   const form = document.querySelector("form");
   form.addEventListener("submit", function (event) {
@@ -5,13 +7,26 @@ window.addEventListener("load", function () {
     const copilotName = document.querySelector("input[name=copilotName]");
     const fuelLevel = document.querySelector("input[name=fuelLevel]");
     const cargoMass = document.querySelector("input[name=cargoMass]");
+
     if (
-      pilotName.value === "" ||
-      copilotName.value === "" ||
-      fuelLevel.value === "" ||
-      cargoMass.value === ""
+      validateInput(pilotName.value) === "Empty" ||
+      validateInput("copilotName.value") === "Empty" ||
+      validateInput("fuelLevel.value") === "Empty" ||
+      validateInput("cargoMass.value") === "Empty"
     ) {
-      alert("Submission stopped --- please enter values for all fields.");
+      alert("Please enter values for all fields.");
+      event.preventDefault();
+    } else if (
+      validateInput(pilotName.value) === "Is a Number" ||
+      validateInput(copilotName.value) === "Is a Number"
+    ) {
+      alert("Please enter valid names for the pilot and copilot.");
+      event.preventDefault();
+    } else if (
+      validateInput(fuelLevel.value) === "Not a Number" ||
+      validateInput(cargoMass.value) === "Not a Number"
+    ) {
+      alert("Please enter valid numbers for the fuel level and cargo mass.");
       event.preventDefault();
     }
   });
