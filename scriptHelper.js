@@ -34,11 +34,11 @@ function validateInput(testInput) {
   }
 }
 
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-  const validatePilot = validateInput(pilotName.value);
-  const validateCopilot = validateInput(copilotName.value);
-  const validateFuelLevel = validateInput(fuelLevel.value);
-  const validateCargoMass = validateInput(cargoMass.value);
+function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
+  const validatePilot = validateInput(pilot);
+  const validateCopilot = validateInput(copilot);
+  const validateFuelLevel = validateInput(fuelLevel);
+  const validateCargoMass = validateInput(cargoLevel);
 
   if (
     validatePilot === "Empty" ||
@@ -47,8 +47,23 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     validateCargoMass === "Empty"
   ) {
     alert("You must enter values for all fields.");
-    event.preventDefault();
+    return "Stop";
+  } else if (
+    validatePilot === "Is a Number" ||
+    validateCopilot === "Is a Number"
+  ) {
+    alert("Please enter valid names for the pilot and copilot.");
+    return "Stop";
+  } else if (
+    validateFuelLevel === "Not a Number" ||
+    validateCargoMass === "Not a Number"
+  ) {
+    alert("Please enter valid numbers for the fuel level and cargo mass.");
+    return "Stop";
   }
+  console.log(
+    "All form fields have valid data --- going on to faultyItems mods."
+  );
   const pilotStatus = document.getElementById("pilotStatus");
   const copilotStatus = document.getElementById("copilotStatus");
   const faultyItems = document.getElementById("faultyItems");
@@ -59,18 +74,23 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   copilotStatus.innerText = `Co-pilot Ready: ${copilot}`;
 
   if (fuelLevel < 10000) {
+    console.log("Fuel level too low.");
     faultyItems.style.visibility = "visible";
+    console.log("faultyItems visibility: ", faultyItems.style.visibility);
     fuelStatus.innerText = `Fuel level is too low for launch.`;
     launchStatus.innerText = `Shuttle not ready for launch!`;
     launchStatus.style.color = "red";
   } else if (cargoMass > 10000) {
+    console.log("Cargo mass too high");
     faultyItems.style.visibility = "visible";
     cargoStatus.innerText = `Cargo mass too high for takeoff`;
     launchStatus.innerText = `Shuttle not ready for launch!`;
     launchStatus.style.color = "red";
   } else {
+    console.log("Everything's ok.");
     launchStatus.innerText = `Shuttle is ready for launch.`;
     launchStatus.style.color = "green";
+    faultyItems.style.visibility = "visible";
   }
 }
 
