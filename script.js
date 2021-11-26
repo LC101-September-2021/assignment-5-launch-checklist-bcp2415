@@ -1,34 +1,9 @@
-const { validateInput } = require("./scriptHelper");
+const { validateInput, formSubmission } = require("./scriptHelper");
 
 window.addEventListener("load", function () {
   const form = document.querySelector("form");
   form.addEventListener("submit", function (event) {
-    const pilotName = document.querySelector("input[name=pilotName]");
-    const copilotName = document.querySelector("input[name=copilotName]");
-    const fuelLevel = document.querySelector("input[name=fuelLevel]");
-    const cargoMass = document.querySelector("input[name=cargoMass]");
-
-    if (
-      validateInput(pilotName.value) === "Empty" ||
-      validateInput("copilotName.value") === "Empty" ||
-      validateInput("fuelLevel.value") === "Empty" ||
-      validateInput("cargoMass.value") === "Empty"
-    ) {
-      alert("Please enter values for all fields.");
-      event.preventDefault();
-    } else if (
-      validateInput(pilotName.value) === "Is a Number" ||
-      validateInput(copilotName.value) === "Is a Number"
-    ) {
-      alert("Please enter valid names for the pilot and copilot.");
-      event.preventDefault();
-    } else if (
-      validateInput(fuelLevel.value) === "Not a Number" ||
-      validateInput(cargoMass.value) === "Not a Number"
-    ) {
-      alert("Please enter valid numbers for the fuel level and cargo mass.");
-      event.preventDefault();
-    }
+    formSubmission();
   });
   let listedPlanets;
   // Set listedPlanetsResponse equal to the value returned by calling myFetch()

@@ -35,6 +35,20 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+  const validatePilot = validateInput(pilotName.value);
+  const validateCopilot = validateInput(copilotName.value);
+  const validateFuelLevel = validateInput(fuelLevel.value);
+  const validateCargoMass = validateInput(cargoMass.value);
+
+  if (
+    validatePilot === "Empty" ||
+    validateCopilot === "Empty" ||
+    validateFuelLevel === "Empty" ||
+    validateCargoMass === "Empty"
+  ) {
+    alert("You must enter values for all fields.");
+    event.preventDefault();
+  }
   const pilotStatus = document.getElementById("pilotStatus");
   const copilotStatus = document.getElementById("copilotStatus");
   const faultyItems = document.getElementById("faultyItems");
