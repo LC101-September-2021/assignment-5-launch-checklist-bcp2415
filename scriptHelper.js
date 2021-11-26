@@ -80,17 +80,20 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
     fuelStatus.innerText = `Fuel level is too low for launch.`;
     launchStatus.innerText = `Shuttle not ready for launch!`;
     launchStatus.style.color = "red";
-  } else if (cargoMass > 10000) {
+    return "Stop";
+  } else if (cargoLevel > 10000) {
     console.log("Cargo mass too high");
     faultyItems.style.visibility = "visible";
     cargoStatus.innerText = `Cargo mass too high for takeoff`;
     launchStatus.innerText = `Shuttle not ready for launch!`;
     launchStatus.style.color = "red";
+    return "Stop";
   } else {
     console.log("Everything's ok.");
     launchStatus.innerText = `Shuttle is ready for launch.`;
     launchStatus.style.color = "green";
     faultyItems.style.visibility = "visible";
+    return "Go";
   }
 }
 

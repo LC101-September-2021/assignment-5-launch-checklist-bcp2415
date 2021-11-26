@@ -15,6 +15,9 @@ window.addEventListener("load", function () {
     );
     if (submit === "Stop") {
       event.preventDefault();
+    } else if (submit === "Go") {
+      const faultyItems = document.getElementById("faultyItems");
+      faultyItems.style.visibility = "visible";
     }
   });
   let listedPlanets;
