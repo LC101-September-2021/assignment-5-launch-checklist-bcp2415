@@ -35,35 +35,6 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
-  const validatePilot = validateInput(pilot);
-  const validateCopilot = validateInput(copilot);
-  const validateFuelLevel = validateInput(fuelLevel);
-  const validateCargoMass = validateInput(cargoLevel);
-
-  if (
-    validatePilot === "Empty" ||
-    validateCopilot === "Empty" ||
-    validateFuelLevel === "Empty" ||
-    validateCargoMass === "Empty"
-  ) {
-    alert("You must enter values for all fields.");
-    return "Stop";
-  } else if (
-    validatePilot === "Is a Number" ||
-    validateCopilot === "Is a Number"
-  ) {
-    alert("Please enter valid names for the pilot and copilot.");
-    return "Stop";
-  } else if (
-    validateFuelLevel === "Not a Number" ||
-    validateCargoMass === "Not a Number"
-  ) {
-    alert("Please enter valid numbers for the fuel level and cargo mass.");
-    return "Stop";
-  }
-  console.log(
-    "All form fields have valid data --- going on to faultyItems mods."
-  );
   const pilotStatus = document.getElementById("pilotStatus");
   const copilotStatus = document.getElementById("copilotStatus");
   const faultyItems = document.getElementById("faultyItems");

@@ -7,11 +7,35 @@ window.addEventListener("load", function () {
     const copilotName = document.querySelector("input[name=copilotName]");
     const fuelLevel = document.querySelector("input[name=fuelLevel]");
     const cargoMass = document.querySelector("input[name=cargoMass]");
-    const validate = validateInput(inputString);
-    if (validate(pilotName.value).trim() === "") {
-      alert("Please enter the pilot's name.");
+    const validatePilot = validateInput(pilot.value);
+    const validateCopilot = validateInput(copilot.value);
+    const validateFuelLevel = validateInput(fuelLevel.value);
+    const validateCargoMass = validateInput(cargoLevel.value);
+
+    if (
+      validatePilot === "Empty" ||
+      validateCopilot === "Empty" ||
+      validateFuelLevel === "Empty" ||
+      validateCargoMass === "Empty"
+    ) {
+      alert("You must enter values for all fields.");
+      event.preventDefault();
+    } else if (
+      validatePilot === "Is a Number" ||
+      validateCopilot === "Is a Number"
+    ) {
+      alert("Please enter valid names for the pilot and copilot.");
+      event.preventDefault();
+    } else if (
+      validateFuelLevel === "Not a Number" ||
+      validateCargoMass === "Not a Number"
+    ) {
+      alert("Please enter valid numbers for the fuel level and cargo mass.");
       event.preventDefault();
     }
+    console.log(
+      "All form fields have valid data --- going on to faultyItems mods."
+    );
     const submit = formSubmission(
       document,
       pilotName.value,
