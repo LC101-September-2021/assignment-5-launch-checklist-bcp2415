@@ -34,7 +34,7 @@ function validateInput(testInput) {
   }
 }
 
-function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   const faultyItems = document.getElementById("faultyItems");
   const launchStatus = document.getElementById("launchStatus");
   const pilotStatus = document.getElementById("pilotStatus");
@@ -49,10 +49,10 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
     faultyItems.style.visibility = "visible";
     fuelStatus.innerText = `Fuel level is too low for launch.`;
     launchStatus.innerText = `Shuttle not ready for launch`;
-    launchStatus.style.color = "red";
+    launchStatus.style.color = "rgb(199, 37, 78)";
   } else if (cargoLevel > 10000) {
     faultyItems.style.visibility = "visible";
-    cargoStatus.innerText = `Too much mass for the shutttle to take off`;
+    cargoStatus.innerText = `Too much mass for the shuttle to take off`;
     launchStatus.innerText = `Shuttle not ready for launch`;
     launchStatus.style.color = "red";
   } else {

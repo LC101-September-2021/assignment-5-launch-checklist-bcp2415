@@ -1,7 +1,7 @@
 window.addEventListener("load", function () {
   const form = document.querySelector("form");
-  const faultyItems = document.getElementById("faultyItems");
-  faultyItems.style.visibility = "hidden";
+  const list = document.getElementById("faultyItems");
+  list.style.visibility = "hidden";
 
   form.addEventListener("submit", function (event) {
     const pilotName = document.querySelector("input[name=pilotName]");
@@ -36,7 +36,8 @@ window.addEventListener("load", function () {
     }
 
     formSubmission(
-      document,
+      window.document,
+      list,
       pilotName.value,
       copilotName.value,
       fuelLevel.value,
