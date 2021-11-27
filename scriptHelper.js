@@ -41,30 +41,23 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
   const fuelStatus = document.getElementById("fuelStatus");
   const launchStatus = document.getElementById("launchStatus");
   const cargoStatus = document.getElementById("cargoStatus");
-  pilotStatus.innerText = `Pilot Ready: ${pilot}`;
-  copilotStatus.innerText = `Co-pilot Ready: ${copilot}`;
+  pilotStatus.innerText = `Pilot ${pilot} is ready for launch`;
+  copilotStatus.innerText = `Co-pilot ${copilot} is ready for launch`;
 
   if (fuelLevel < 10000) {
-    console.log("Fuel level too low.");
     faultyItems.style.visibility = "visible";
-    console.log("faultyItems visibility: ", faultyItems.style.visibility);
     fuelStatus.innerText = `Fuel level is too low for launch.`;
-    launchStatus.innerText = `Shuttle not ready for launch!`;
+    launchStatus.innerText = `Shuttle not ready for launch`;
     launchStatus.style.color = "red";
-    return "Stop";
   } else if (cargoLevel > 10000) {
-    console.log("Cargo mass too high");
     faultyItems.style.visibility = "visible";
-    cargoStatus.innerText = `Cargo mass too high for takeoff`;
-    launchStatus.innerText = `Shuttle not ready for launch!`;
+    cargoStatus.innerText = `Too much mass for the shutttle to take off`;
+    launchStatus.innerText = `Shuttle not ready for launch`;
     launchStatus.style.color = "red";
-    return "Stop";
   } else {
-    console.log("Everything's ok.");
-    launchStatus.innerText = `Shuttle is ready for launch.`;
-    launchStatus.style.color = "green";
     faultyItems.style.visibility = "visible";
-    return "Stop";
+    launchStatus.innerText = `Shuttle is ready for launch`;
+    launchStatus.style.color = "green";
   }
 }
 

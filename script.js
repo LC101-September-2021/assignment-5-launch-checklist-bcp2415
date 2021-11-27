@@ -33,22 +33,14 @@ window.addEventListener("load", function () {
       alert("Please enter valid numbers for the fuel level and cargo mass.");
       event.preventDefault();
     }
-    console.log(
-      "All form fields have valid data --- going on to faultyItems mods."
-    );
-    const submit = formSubmission(
+
+    formSubmission(
       document,
       pilotName.value,
       copilotName.value,
       fuelLevel.value,
       cargoMass.value
     );
-    if (submit === "Stop") {
-      event.preventDefault();
-    } else if (submit === "Go") {
-      const faultyItems = document.getElementById("faultyItems");
-      faultyItems.style.visibility = "visible";
-    }
   });
   let listedPlanets;
   // Set listedPlanetsResponse equal to the value returned by calling myFetch()
