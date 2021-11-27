@@ -93,7 +93,7 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
     launchStatus.innerText = `Shuttle is ready for launch.`;
     launchStatus.style.color = "green";
     faultyItems.style.visibility = "visible";
-    return "Go";
+    return "Stop";
   }
 }
 

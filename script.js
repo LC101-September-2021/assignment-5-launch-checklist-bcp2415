@@ -1,3 +1,5 @@
+const { validateInput } = require("./scriptHelper");
+
 window.addEventListener("load", function () {
   const form = document.querySelector("form");
   form.addEventListener("submit", function (event) {
@@ -5,7 +7,11 @@ window.addEventListener("load", function () {
     const copilotName = document.querySelector("input[name=copilotName]");
     const fuelLevel = document.querySelector("input[name=fuelLevel]");
     const cargoMass = document.querySelector("input[name=cargoMass]");
-    const list = [];
+    const validate = validateInput(inputString);
+    if (validate(pilotName.value).trim() === "") {
+      alert("Please enter the pilot's name.");
+      event.preventDefault();
+    }
     const submit = formSubmission(
       document,
       pilotName.value,
