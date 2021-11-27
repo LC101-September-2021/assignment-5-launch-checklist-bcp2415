@@ -41,10 +41,9 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
   const copilotStatus = document.getElementById("copilotStatus");
   const fuelStatus = document.getElementById("fuelStatus");
   const cargoStatus = document.getElementById("cargoStatus");
-  const list = document.querySelector("ol");
-  list.style.visibility = "hidden";
   pilotStatus.innerText = `Pilot ${pilot} is ready for launch`;
   copilotStatus.innerText = `Co-pilot ${copilot} is ready for launch`;
+  faultyItems.style.visibility = "hidden";
 
   if (fuelLevel < 10000) {
     faultyItems.style.visibility = "visible";

@@ -1,5 +1,8 @@
 window.addEventListener("load", function () {
   const form = document.querySelector("form");
+  const faultyItems = document.getElementById("faultyItems");
+  faultyItems.style.visibility = "hidden";
+
   form.addEventListener("submit", function (event) {
     const pilotName = document.querySelector("input[name=pilotName]");
     const copilotName = document.querySelector("input[name=copilotName]");
