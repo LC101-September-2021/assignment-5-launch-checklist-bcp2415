@@ -35,12 +35,14 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
+  const faultyItems = document.getElementById("faultyItems");
+  const launchStatus = document.getElementById("launchStatus");
   const pilotStatus = document.getElementById("pilotStatus");
   const copilotStatus = document.getElementById("copilotStatus");
-  const faultyItems = document.getElementById("faultyItems");
   const fuelStatus = document.getElementById("fuelStatus");
-  const launchStatus = document.getElementById("launchStatus");
   const cargoStatus = document.getElementById("cargoStatus");
+  const list = document.querySelector("ol");
+  list.style.visibility = "hidden";
   pilotStatus.innerText = `Pilot ${pilot} is ready for launch`;
   copilotStatus.innerText = `Co-pilot ${copilot} is ready for launch`;
 
