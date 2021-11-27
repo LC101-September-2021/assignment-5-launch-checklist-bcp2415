@@ -8,10 +8,10 @@ window.addEventListener("load", function () {
     const copilotName = document.querySelector("input[name=copilotName]");
     const fuelLevel = document.querySelector("input[name=fuelLevel]");
     const cargoMass = document.querySelector("input[name=cargoMass]");
-    const validatePilot = validateInput(pilot.value);
-    const validateCopilot = validateInput(copilot.value);
+    const validatePilot = validateInput(pilotName.value);
+    const validateCopilot = validateInput(copilotName.value);
     const validateFuelLevel = validateInput(fuelLevel.value);
-    const validateCargoMass = validateInput(cargoLevel.value);
+    const validateCargoMass = validateInput(cargoMass.value);
 
     if (
       validatePilot === "Empty" ||
