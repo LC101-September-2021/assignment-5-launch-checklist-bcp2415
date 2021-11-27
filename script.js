@@ -1,5 +1,3 @@
-const { validateInput } = require("./scriptHelper");
-
 window.addEventListener("load", function () {
   const form = document.querySelector("form");
   form.addEventListener("submit", function (event) {
