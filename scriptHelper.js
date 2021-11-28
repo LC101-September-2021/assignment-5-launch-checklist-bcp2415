@@ -10,18 +10,18 @@ function addDestinationInfo(
   moons,
   imageUrl
 ) {
-  // Here is the HTML formatting for our mission target div.
-  /*
+  const missionTarget = document.getElementById("missionTarget");
+  missionTarget.innerHTML = `
                 <h2>Mission Destination</h2>
                 <ol>
-                    <li>Name: </li>
-                    <li>Diameter: </li>
+                    <li>Name: ${name}</li>
+                    <li>Diameter: ${diameter}</li>
                     <li>Star: ${star}</li>
-                    <li>Distance from Earth: </li>
-                    <li>Number of Moons: </li>
+                    <li>Distance from Earth: ${distance}</li>
+                    <li>Number of Moons: ${moons}</li>
                 </ol>
-                <img src="">
-   */
+                <img src="${imageUrl}">
+                `;
 }
 
 function validateInput(testInput) {
@@ -61,17 +61,33 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     launchStatus.innerHTML = `Shuttle is Ready for Launch`;
     launchStatus.style.color = "rgb(65, 159, 106)";
   }
+  return document;
 }
 
 async function myFetch() {
   let planetsReturned;
 
-  planetsReturned = await fetch().then(function (response) {});
+  fetch("https://handlers.education.launchcode.org/static/planets.json").then(
+    async function (response) {
+      response.json().then(async function (json) {
+        console.log(json);
+        planetsReturned = json;
+        console.log(planetsReturned);
+        return await planetsReturned;
+      });
+      return await planetsReturned;
+    }
+  );
 
-  return planetsReturned;
+  console.log(planetsReturned);
+
+  return await planetsReturned;
 }
 
-function pickPlanet(planets) {}
+function pickPlanet(planets) {
+  const chosenPlanet = planets[Math.floor(Math.random() * planets.length)];
+  return chosenPlanet;
+}
 
 module.exports.addDestinationInfo = addDestinationInfo;
 module.exports.validateInput = validateInput;
