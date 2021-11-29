@@ -69,10 +69,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   return fetch("https://handlers.education.launchcode.org/static/planets.json")
    .then(
     function (result) {
-      console.log(result);
       return result.json()
    .then(function (json) {
-         console.log(json);
          return json;
       });
     }
