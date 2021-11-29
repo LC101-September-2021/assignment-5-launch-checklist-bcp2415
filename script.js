@@ -47,11 +47,16 @@ window.addEventListener("load", function () {
   });
   let listedPlanets;
   // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-  let listedPlanetsResponse = myFetch();
+  let listedPlanetsResponse =  myFetch();
+  console.log(listedPlanetsResponse);
   listedPlanetsResponse
     .then(function (result) {
-      listedPlanets = result;
-      console.log(listedPlanets);
+      return result.json().then( function(json ) {
+        listedPlanets = json;
+        console.log(json);
+        return listedPlanetsResponse;
+
+      })
     })
     .then(function () {
       console.log(listedPlanets);
