@@ -73,7 +73,7 @@ async function myFetch() {
     planetsReturned = await result.json();
     console.log(planetsReturned);
 
-    return planetsReturned;
+    return await planetsReturned;
   });
 }
 
