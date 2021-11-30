@@ -13,6 +13,8 @@ window.addEventListener("load", function () {
     const validateFuelLevel = validateInput(fuelLevel.value);
     const validateCargoMass = validateInput(cargoMass.value);
 
+    event.preventDefault();
+
     if (
       validatePilot === "Empty" ||
       validateCopilot === "Empty" ||
@@ -20,19 +22,16 @@ window.addEventListener("load", function () {
       validateCargoMass === "Empty"
     ) {
       alert("You must enter values for all fields.");
-      event.preventDefault();
     } else if (
       validatePilot === "Is a Number" ||
       validateCopilot === "Is a Number"
     ) {
       alert("Please enter valid names for the pilot and copilot.");
-      event.preventDefault();
     } else if (
       validateFuelLevel === "Not a Number" ||
       validateCargoMass === "Not a Number"
     ) {
       alert("Please enter valid numbers for the fuel level and cargo mass.");
-      event.preventDefault();
     }
 
     formSubmission(
