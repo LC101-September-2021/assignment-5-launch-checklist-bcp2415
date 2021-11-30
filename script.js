@@ -51,7 +51,6 @@ window.addEventListener("load", function () {
   listedPlanetsResponse
     .then(function (result) {
         listedPlanets = result;
-        console.log(listedPlanets);
         const planet = pickPlanet(listedPlanets);
         addDestinationInfo(
         window.document,
